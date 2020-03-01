@@ -25,4 +25,6 @@ RUN rm ./*
 COPY ./assets/site.conf .
 RUN a2ensite site.conf
 
+WORKDIR /var/www/html
+
 CMD ["/bin/bash", "/usr/src/app/startup.sh"]
