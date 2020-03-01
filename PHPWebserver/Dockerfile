@@ -9,6 +9,7 @@ RUN apt-get install apache2 -y
 RUN apt-get install libapache2-mod-php -y
 RUN apt-get install php-mysql -y
 RUN phpenmod pdo
+RUN a2enmod rewrite
 
 WORKDIR /usr/src/app
 COPY ./assets/startup.sh .
