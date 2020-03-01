@@ -7,6 +7,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get install apache2 -y
 RUN apt-get install libapache2-mod-php -y
-RUN service apache2 start
 
-CMD ["/bin/bash"]
+WORKDIR /usr/src/app
+COPY startup.sh .
+
+CMD ["/bin/bash", "/usr/src/app/startup.sh"]
