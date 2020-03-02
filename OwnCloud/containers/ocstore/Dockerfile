@@ -33,6 +33,7 @@ RUN rm -rf ./html
 RUN wget https://download.owncloud.org/community/owncloud-10.3.2.zip
 RUN unar owncloud-10.3.2.zip
 RUN rm owncloud-10.3.2.zip
+RUN chown -R www-data:www-data ./owncloud
 
 WORKDIR /var/www/owncloud
 
