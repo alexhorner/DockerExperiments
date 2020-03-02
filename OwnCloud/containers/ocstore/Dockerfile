@@ -8,6 +8,7 @@ COPY ./entrypoint.sh /container
 
 RUN apt-get update
 RUN apt-get install unar -y
+RUN apt-get install wget -y
 RUN apt-get install apache2 -y
 RUN apt-get install libapache2-mod-php -y
 RUN apt-get install php-mysql -y
