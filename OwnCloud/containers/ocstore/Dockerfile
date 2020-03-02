@@ -4,7 +4,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 EXPOSE 80
 
-COPY ./entrypoint.sh /container
+WORKDIR /container
+COPY ./entrypoint.sh .
 
 RUN apt-get update
 RUN apt-get install unar -y
