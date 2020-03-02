@@ -1,9 +1,16 @@
 FROM ubuntu:18.04
 
+ENV DEBIAN_FRONTEND=noninteractive
+
+COPY ./entrypoint.sh /container
+
 RUN apt-get update
 RUN apt-get install unar -y
 RUN apt-get install apache2 -y
 RUN apt-get install libapache2-mod-php -y
+RUN apt-get install php-mysql -y
+RUN phpenmod pdo
+RUN a2enmod rewrite
 
 WORKDIR /var/www
 RUN rm -rf ./html
