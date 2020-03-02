@@ -12,6 +12,7 @@ RUN apt-get install unar -y
 RUN apt-get install wget -y
 RUN apt-get install apache2 -y
 RUN apt-get install libapache2-mod-php -y
+RUN apt-get install php-mysql -y
 RUN apt-get install php-zip -y
 RUN apt-get install php-mbstring -y
 RUN apt-get install php-xml -y
