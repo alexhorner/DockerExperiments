@@ -11,10 +11,10 @@ services:
             - "587:587"
             - "993:993"
         volumes:
-            - maildata:/var/mail
-            - mailstate:/var/mail-state
-            - mailconfig:/tmp/docker-mailserver/
-            - /etc/letsencrypt/live/cloudyhost.net:/etc/letsencrypt/:ro
+            - mail_data:/var/mail
+            - mail_state:/var/mail-state
+            - mail_config:/tmp/docker-mailserver
+            - /etc/letsencrypt/live/cloudyhost.net:/etc/letsencrypt:ro
             - /etc/localtime:/etc/localtime:ro
 
     webmail:
@@ -22,10 +22,25 @@ services:
         environment:
             - ROUNDCUBEMAIL_DEFAULT_HOST=mail
             - ROUNDCUBEMAIL_SMTP_SERVER=mail
+        depends_on:
+            - mail
+            - webmail_db
         ports:
             - "${WEBMAIL_PORT}:80"
+        volumes:
+            - webmail_db:/var/lib/mysql
+
+    webmail_db:
+        image: mysql
+        environment:
+            - MYSQL_DATABASE=${DATABASE_NAMING}
+            - MYSQL_USER=${DATABASE_NAMING}
+            - MYSQL_PASSWORD=${DATABASE_PASSWORD}
+            - MYSQL_RANDOM_ROOT_PASSWORD=yes
+            
 
 volumes:
-    maildata:
-    mailstate:
-    mailconfig:
+    mail_data:
+    mail_state:
+    mail_config:
+    webmail_db:
