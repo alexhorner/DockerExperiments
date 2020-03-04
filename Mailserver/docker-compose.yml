@@ -40,8 +40,6 @@ services:
             - MYSQL_USER=${DATABASE_NAMING}
             - MYSQL_PASSWORD=${DATABASE_PASSWORD}
             - MYSQL_RANDOM_ROOT_PASSWORD=yes
-        expose:
-            - "3306"
         volumes:
             - webmail_db:/var/lib/mysql
             
