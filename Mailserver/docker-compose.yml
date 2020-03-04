@@ -5,22 +5,20 @@ services:
         image: tvial/docker-mailserver:latest
         hostname: docker
         domainname: docker.cloudyhost.net
-        container_name: mail
         ports:
-        - "25:25"
-        - "143:143"
-        - "587:587"
-        - "993:993"
+            - "25:25"
+            - "143:143"
+            - "587:587"
+            - "993:993"
         volumes:
-        - maildata:/var/mail
-        - mailstate:/var/mail-state
-        - mailconfig:/tmp/docker-mailserver/
-        - /etc/letsencrypt/live/cloudyhost.net:/etc/letsencrypt/:ro
-        - /etc/localtime:/etc/localtime:ro
+            - maildata:/var/mail
+            - mailstate:/var/mail-state
+            - mailconfig:/tmp/docker-mailserver/
+            - /etc/letsencrypt/live/cloudyhost.net:/etc/letsencrypt/:ro
+            - /etc/localtime:/etc/localtime:ro
      
 #    webmail:
 #        image: krishath/rainloop-ssl
-#        container_name: webmail
 #        volumes:
 #        - /etc/letsencrypt/live/cloudyhost.net/cert.pem:/etc/ssl/cert.pem:ro
 #        - /etc/letsencrypt/live/cloudyhost.net/privkey.pem:/etc/ssl/cert.key:ro
@@ -31,12 +29,11 @@ services:
 
     webmail:
         image: roundcube/roundcubemail
-        container_name: webmail
         environment:
-        - ROUNDCUBEMAIL_DEFAULT_HOST=mail
-        - ROUNDCUBEMAIL_SMTP_SERVER=mail
+            - ROUNDCUBEMAIL_DEFAULT_HOST=mail
+            - ROUNDCUBEMAIL_SMTP_SERVER=mail
         ports:
-        - "800:80"
+            - "800:80"
 volumes:
     maildata:
     mailstate:
