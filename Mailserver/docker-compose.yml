@@ -22,6 +22,11 @@ services:
         environment:
             - ROUNDCUBEMAIL_DEFAULT_HOST=mail
             - ROUNDCUBEMAIL_SMTP_SERVER=mail
+            - ROUNDCUBEMAIL_DB_TYPE=mysql
+            - ROUNDCUBEMAIL_DB_HOST=webmail_db
+            - ROUNDCUBEMAIL_DB_USER=${DATABASE_NAMING}
+            - ROUNDCUBEMAIL_DB_NAME=${DATABASE_NAMING}
+            - ROUNDCUBEMAIL_DB_PASSWORD=${DATABASE_PASSWORD}
         depends_on:
             - mail
             - webmail_db
