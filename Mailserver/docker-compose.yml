@@ -34,7 +34,7 @@ services:
             - "${WEBMAIL_PORT}:80"
 
     webmail_db:
-        image: mysql
+        image: mysql:5.6
         environment:
             - MYSQL_DATABASE=${DATABASE_NAMING}
             - MYSQL_USER=${DATABASE_NAMING}
