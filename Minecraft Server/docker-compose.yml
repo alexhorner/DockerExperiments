@@ -8,5 +8,5 @@ services:
         volumes:
             - "./data/minecraft:/data"
         environment:
-            - MC_SERVER_MEMORY_MEGS: ${MC_SERVER_MEMORY_MEGS}
+            - MC_SERVER_MEMORY_MEGS: "${MC_SERVER_MEMORY_MEGS}"
             - MC_SERVER_JAR: ${MC_SERVER_JAR}
