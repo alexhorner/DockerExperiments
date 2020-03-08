@@ -1,0 +1,12 @@
+version : "3.7"
+
+services:
+    minecraft:
+        image: alexhorner\minecraft
+        ports:
+            - "${MC_PORT}:25565"
+        volumes:
+            - "./data/minecraft:/data"
+        environment:
+            - MC_SERVER_MEMORY_MEGS = ${MC_SERVER_MEMORY_MEGS}
+            - MC_SERVER_JAR = ${MC_SERVER_JAR}
