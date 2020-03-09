@@ -10,3 +10,13 @@ services:
         environment:
             - "MC_SERVER_MEMORY_MEGS=${MC_SERVER_MEMORY_MEGS}"
             - "MC_SERVER_JAR=${MC_SERVER_JAR}"
+
+    database:
+        image: mysql:5.7
+        environment:
+            - MYSQL_DATABASE=minecraft
+            - MYSQL_USER=minecraft
+            - MYSQL_PASSWORD=letmeintominecraft
+            - MYSQL_RANDOM_ROOT_PASSWORD=yes
+        volumes:
+            - ./data/database:/var/lib/mysql
