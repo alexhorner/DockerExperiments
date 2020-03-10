@@ -5,6 +5,7 @@ services:
         image: alexhorner/minecraft
         ports:
             - "${MC_PORT}:25565"
+            - "${RCON_PORT}:25566"
         volumes:
             - "./data/minecraft:/data"
         environment:
